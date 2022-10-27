@@ -8,6 +8,7 @@ export const Header = () => {
             <li>
                 <a href="#">
                     <i className="fa-solid fa-cart-shopping"></i>
+                    <span> Carrito (0)</span>
                 </a>
             </li>
         </ul>

@@ -25,12 +25,12 @@ code {
   display: flex;
   list-style: none;
   justify-content: space-between;
-  margin: 0px 20px;
 }
 
 .nav ul li a {
   text-decoration: none;
   color: white;
+  margin-right: 20px;
 }
 
 .container-products {
@@ -45,11 +45,71 @@ code {
   flex-direction: column;
   width: 200px;
   margin: 10px;
-  box-shadow: 3px 4px 10px black;
+  border-radius: 5px;
+  box-shadow: 3px 4px 10px gray;
 }
 
-.card .title {
+.card img {
+  border-radius: 5px 5px 0 0;
+}
+
+.card .reviews {
+  font-size: 12px;
+  position: relative;
+  bottom: 25px;
+  left: 160px;
+}
+
+.card .card-info {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+}
+
+.card .card-info .title {
   font-size: 16px;
   font-weight: bold;
   text-align: left;
+  position: relative;
+  bottom: 15px;
+
+  max-height: 20px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card .card-info .details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.card .card-info .btn {
+  border: none;
+  color: white;
+  padding: 5px 0;
+  font-weight: bold;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.card .card-info .btn-red {
+  background-color: #F82725;
+}
+
+.card .card-info .btn-red:hover {
+  background-color: #CF221F;
+}
+
+.card .card-info .btn-blue {
+  background-color: #1473E6;
+}
+
+.card .card-info .btn-blue:hover {
+  background-color: #1057AD;
+}
+
+.fa-star {
+  color: #E8D015;
 }
