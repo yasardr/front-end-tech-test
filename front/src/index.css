@@ -22,6 +22,9 @@ ul {
 }
 
 .nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
   padding: 10px;
   height: 60px;
   background-color: black;
@@ -44,6 +47,7 @@ ul {
 .container-products {
   display: flex;
   padding: 50px;
+  margin-top: 30px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -133,6 +137,7 @@ ul {
 }
 
 .message {
+  margin-top: 90px !important;
   font-size: 2rem;
   color: black;
   margin-top: 50px;
@@ -142,6 +147,7 @@ ul {
 
 .list-items {
   padding: 20px;
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -202,4 +208,45 @@ ul {
 .list-items .list-item .info .details {
   display: flex;
   justify-content: space-around;
+}
+
+.container-alert {
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  color: black;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-alert .alert {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: white;
+  border-radius: 15px;
+  border: 3px solid grey;
+}
+
+.container-alert .alert .icon {
+ font-size: 3rem;
+}
+
+.container-alert .alert .action {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.container-alert .alert .action .close-alert {
+ border: none;
+ cursor: pointer;
+ position: relative;
+ background-color: transparent;
 }
