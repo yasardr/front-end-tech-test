@@ -1,15 +1,17 @@
-export const Header = () => {
+import { Link } from "react-router-dom"
+
+export const Header = ({count}) => {
   return (
     <div className="nav">
         <ul>
             <li>
-                <a href="#">Products</a>
+                <Link to="/">Home</Link>
             </li>
             <li>
-                <a href="#">
+                <Link to="/cart">
                     <i className="fa-solid fa-cart-shopping"></i>
-                    <span> Carrito (0)</span>
-                </a>
+                    <span> Carrito ({count})</span>
+                </Link>
             </li>
         </ul>
     </div>

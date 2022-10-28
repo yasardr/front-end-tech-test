@@ -1,29 +1,53 @@
-export const ProductItem = ({product}) => {
-  const { _id, name, image, rating, numReviews, price, countInStock } = product;
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-  const handleAddItem = id => {
-    console.log('Add item', id);
+export const ProductItem = ({ cart, product, addProduct, removeProduct }) => {
+
+  const { _id, name, image, rating, numReviews, price, countInStock } = product;
+  const [stock, setStock] = useState(countInStock);
+
+  useEffect(() => {
+    if (cart.length !== 0) {
+      const product = cart.filter(p => p.id === _id);
+      console.log(product);
+      if (product.length > 0) {
+        setStock(countInStock - product[0].amount);
+        console.log('Actualizar stock');
+      }
+    }
+  }, []);
+  
+  const handleAddProduct = id => {
+    addProduct(id);
+    setStock(stock - 1);
   }
 
-  const handleRemoveItem = id => {
-    console.log('Remove item ', id);
+  const handleRemoveProduct = id => {
+    removeProduct(id);
+    if (stock + 1 <= countInStock) {
+      setStock(stock + 1);
+    }
   }
 
   return (
     <div className="card">
-      <img width="200" src={`http://localhost:5000/${image}`} alt={name} />
-      <span className="reviews">{numReviews} <i class="fa-regular fa-eye"></i></span>
+      <Link to={`/details/${_id}`}>
+        <img width="200" src={`http://localhost:5000/${image}`} alt={name} />
+        <span className="reviews">{numReviews} <i className="fa-regular fa-eye"></i></span>
+      </Link>
       <div className="card-info">
-        <span className="title">{name}</span>
-        <span>Price: ${price} MXN</span>
+        <Link className="title" to={`/details/${_id}`}>
+          {name}
+        </Link>
+        <span>Price: ${price} USD</span>
         <div className="details">
-          <span>Stock: {countInStock}</span>
-          <span>{rating} <i class="fa-regular fa-star"></i></span>
+          <span>Stock: {stock}</span>
+          <span>{rating} <i className="fa-regular fa-star"></i></span>
         </div>
-        <button className="btn btn-blue" type="button" onClick={ () => handleAddItem(_id) }>
+        <button className={`btn btn-blue ${stock === 0 ? 'inactive' : 'active'}`} type="button" onClick={ () => handleAddProduct(_id) }>
           Add item to cart
         </button>
-        <button className="btn btn-red" type="button" onClick={ () => handleRemoveItem(_id) }>
+        <button className="btn btn-red" type="button" onClick={ () => handleRemoveProduct(_id) }>
           <i className="fa-solid fa-trash"></i>
         </button>
       </div>

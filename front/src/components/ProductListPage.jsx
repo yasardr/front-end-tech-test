@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import { productsApi } from "../api/productsApi";
-import { ProductItem } from "./ProductItem";
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
+import { ProductItem } from './ProductItem';
 
-export const ProductListPage = () => {
+export const ProductListPage = ({products, isLoading}) => {
 
-    const [products, setProducts] = useState([]);
-
-    const getProducts = async () => {
-        const { data } = await productsApi.get('/products');
-        setProducts(data);
-        console.log(data);
-    }
-
-    useEffect(() => {
-      getProducts();
-    }, [])
+    const { cart, addProduct, removeProduct } = useContext( CartContext );
     
-
     return (
         <div className="container-products">
             {
-                products.map(product => (
-                    <ProductItem key={product._id} product={product} />
-                ))
+                isLoading
+                ? <span className='message'>Cargando...</span>
+                :   products.map(product => (
+                        <ProductItem 
+                            key={product._id} 
+                            cart={cart}
+                            product={product} 
+                            addProduct={addProduct} 
+                            removeProduct={removeProduct} />
+                    ))
             }
         </div>
     )
