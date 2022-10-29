@@ -1,4 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { CartPage } from './components/CartPage';
+import { Header } from './components/Header';
+import { NotFound } from './components/NotFound';
+import { ProductDisplayPage } from './components/ProductDisplayPage';
+import { ProductListPage } from './components/ProductListPage';
+import { CartContext } from './context/CartContext';
 
 const App = () => {
   // -------------------------------------------------
@@ -14,17 +21,23 @@ const App = () => {
         .then((res) => res.text())
         .then((res) => setResponse(res))
     }
-    getApiResponse()
-  }, [])
+    getApiResponse();
+    console.log(response);
+  }, [response])
   // -------------------------------------------------
 
+  const { count } = useContext( CartContext );
+
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1> Prueba tecnica front Ecomsur 2021</h1>
-      <p>Borra esto y comienza aqui.</p>
-      {/* Check to see if express server is running correctly */}
-      <h5>{response}</h5>
-    </div>
+    <>
+      <Header count={count} />
+      <Routes>
+        <Route path='/' element={ <ProductListPage /> } />
+        <Route path='details/:id' element={ <ProductDisplayPage /> } />
+        <Route path='cart' element={ <CartPage /> } />
+        <Route path='/*' element={ <NotFound /> } />
+      </Routes>
+    </>
   )
 }
 
