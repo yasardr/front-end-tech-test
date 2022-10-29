@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export const ProductListItem = ({ product, addProduct, removeProduct, amount }) => {
+export const ProductListItem = ({ product, removeProduct, _amount }) => {
+
   const { _id, name, image, price, category } = product;
+  const [amount, setAmount] = useState(_amount);
+
+  const handleRemoveProduct = id => {
+    removeProduct(id);
+    if (amount - 1 > 0) {
+      setAmount(amount - 1);
+    }
+  }
 
   return (
     <div className="list-item">
@@ -15,7 +25,12 @@ export const ProductListItem = ({ product, addProduct, removeProduct, amount }) 
             <Link className="title" to={`/details/${_id}`}>
                 {name}
             </Link>
-            <span className="category">{category}</span>
+            <div className="action">
+                <span className="category">{category}</span>
+                <button className="btn btn-red" type="button" onClick={ () => handleRemoveProduct(_id) }>
+                    <i className="fa-solid fa-trash"></i>
+                </button>
+            </div>
             <div className="total">
                 <ul>
                     <li>Price: ${price} USD</li>

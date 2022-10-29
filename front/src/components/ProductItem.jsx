@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from './Alert';
 
-export const ProductItem = ({ cart, product, addProduct, removeProduct }) => {
+export const ProductItem = ({ cart, product, addProduct }) => {
 
   const { _id, name, image, rating, numReviews, price, countInStock } = product;
   const [stock, setStock] = useState(countInStock);
@@ -35,20 +35,6 @@ export const ProductItem = ({ cart, product, addProduct, removeProduct }) => {
     setStock(stock - 1);
   }
 
-  const handleRemoveProduct = id => {
-    const resp = removeProduct(id);
-    setAlert({
-      title: 'Remove',
-      message: resp,
-      icon: 'fa-solid fa-trash',
-      color: 'red',
-      status: true
-    });
-    if (stock + 1 <= countInStock) {
-      setStock(stock + 1);
-    }
-  }
-
   const onCloseAlert = () => {
     setAlert({
       ...alert,
@@ -74,9 +60,6 @@ export const ProductItem = ({ cart, product, addProduct, removeProduct }) => {
           </div>
           <button className={`btn btn-blue ${stock === 0 ? 'inactive' : 'active'}`} type="button" onClick={ () => handleAddProduct(_id) }>
             Add item to cart
-          </button>
-          <button className="btn btn-red" type="button" onClick={ () => handleRemoveProduct(_id) }>
-            <i className="fa-solid fa-trash"></i>
           </button>
         </div>
       </div>

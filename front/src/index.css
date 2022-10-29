@@ -131,7 +131,7 @@ ul {
   font-size: 14px;
 }
 
-.card .card-info .btn {
+.btn {
   cursor: pointer;
   border: none;
   color: white;
@@ -141,16 +141,21 @@ ul {
   margin-top: 10px;
 }
 
-.card .card-info .btn-red {
+.btn-red {
+  width: 50px;
   background-color: #F82725;
 }
 
-.card .card-info .btn-red:hover {
+.btn-red:hover {
   background-color: #CF221F;
 }
 
-.card .card-info .btn-blue {
+.btn-blue {
   background-color: #1473E6;
+}
+
+.btn-blue:hover {
+  background-color: #1057AD;
 }
 
 .card .card-info .inactive {
@@ -158,10 +163,6 @@ ul {
   color: white;
   pointer-events: none;
   background-color: grey;
-}
-
-.card .card-info .btn-blue:hover {
-  background-color: #1057AD;
 }
 
 .fa-star {
@@ -199,6 +200,12 @@ ul {
   width: 200px;
   overflow: hidden;
   border-radius: 15px 0 0 15px;
+}
+
+.list-items .list-item .action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .list-items .list-item .info {
@@ -320,6 +327,11 @@ ul {
   .list-items .list-item .info .total ul {
     padding: 0;
   }
+
+  .list-items .list-item .action {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 600px) and (max-width: 850px) {
@@ -329,5 +341,9 @@ ul {
 
   .list-items .list-item .info .total ul {
     margin-right: 20px;
+  }
+
+  .list-items .list-item .action {
+    justify-content: space-evenly;
   }
 }

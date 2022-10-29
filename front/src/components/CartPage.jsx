@@ -24,7 +24,7 @@ export const CartPage = () => {
                         product={product[0]} 
                         addProduct={addProduct} 
                         removeProduct={removeProduct}
-                        amount={p.amount} />;
+                        _amount={p.amount} />;
               })
             }
             </div>
