@@ -1,35 +1,28 @@
+import { Link } from "react-router-dom";
+
 export const ProductListItem = ({ product, addProduct, removeProduct, amount }) => {
-  const { name, image, rating, numReviews, price, category } = product;
+  const { _id, name, image, price, category } = product;
 
   return (
     <div className="list-item">
         <div className="image">
-            <img width="200" src={`http://localhost:5000/${image}`} alt={name} />
+            <Link to={`/details/${_id}`}>
+                <img width="200" src={`http://localhost:5000/${image}`} alt={name} />
+            </Link>
         </div>
 
         <div className="info">
-            <span className="title">{name}</span>
-            <div className="details">  
-                <span className="category">{category}</span>
-                <span className="reviews">{numReviews} <i className="fa-regular fa-eye"></i></span>
-                <span>{rating} <i className="fa-regular fa-star"></i></span>
-            </div>
+            <Link className="title" to={`/details/${_id}`}>
+                {name}
+            </Link>
+            <span className="category">{category}</span>
             <div className="total">
                 <ul>
                     <li>Price: ${price} USD</li>
                     <li>Amount: {amount}</li>
-                    <li>Total: ${amount * price} USD</li>
+                    <li>Total: ${(amount * price).toFixed(2)} USD</li>
                 </ul>
             </div>
-            {/* <div className="actions">
-                <button className="btn btn-blue" type="button" onClick={ () => addProduct(_id) }>
-                    -
-                </button>
-                <span>{amount}</span>
-                <button className="btn btn-red" type="button" onClick={ () => removeProduct(_id) }>
-                    +
-                </button>
-            </div> */}
         </div>
     </div>
   )

@@ -6,7 +6,6 @@ import { NotFound } from './components/NotFound';
 import { ProductDisplayPage } from './components/ProductDisplayPage';
 import { ProductListPage } from './components/ProductListPage';
 import { CartContext } from './context/CartContext';
-import { useGetProducts } from './hooks/useGetProducts';
 
 const App = () => {
   // -------------------------------------------------
@@ -27,16 +26,15 @@ const App = () => {
   }, [response])
   // -------------------------------------------------
 
-  const { products, isLoading } = useGetProducts();
   const { count } = useContext( CartContext );
 
   return (
     <>
       <Header count={count} />
       <Routes>
-        <Route path='/' element={ <ProductListPage products={products} isLoading={isLoading} /> } />
+        <Route path='/' element={ <ProductListPage /> } />
         <Route path='details/:id' element={ <ProductDisplayPage /> } />
-        <Route path='cart' element={ <CartPage products={products} /> } />
+        <Route path='cart' element={ <CartPage /> } />
         <Route path='/*' element={ <NotFound /> } />
       </Routes>
     </>

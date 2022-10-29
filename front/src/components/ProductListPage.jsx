@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { useGetProducts } from '../hooks/useGetProducts';
 import { ProductItem } from './ProductItem';
 
-export const ProductListPage = ({products, isLoading}) => {
 
+export const ProductListPage = () => {
+
+    const { products, isLoading } = useGetProducts();
     const { cart, addProduct, removeProduct } = useContext( CartContext );
     
     return (

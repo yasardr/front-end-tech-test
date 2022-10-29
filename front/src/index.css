@@ -44,12 +44,44 @@ ul {
   margin-right: 20px;
 }
 
+.container-detail {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.container-detail .details {
+  margin: 70px;
+  padding: 10px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px gray;
+}
+
+.container-detail .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.container-detail .extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-detail p {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.container-detail .info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .container-products {
   display: flex;
   padding: 50px;
   margin-top: 30px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -182,9 +214,10 @@ ul {
   font-weight: bold;
   font-size: 18px;
   margin: 5px 0;
+  color: black;
 }
 
-.list-items .list-item .info .category {
+.category {
   width: 150px;
   text-align: center;
   display: inline-block;
@@ -193,7 +226,7 @@ ul {
   border: 2px solid grey;
 }
 
-.list-items .list-item .info .category:hover {
+.category:hover {
   color: white;
   font-weight: bold;
   background-color: grey;
@@ -249,4 +282,52 @@ ul {
  cursor: pointer;
  position: relative;
  background-color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-detail .details .image img {
+    width: 190px;
+  }
+
+  .container-detail .info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    margin-bottom: 10px;
+  }
+
+  .list-items .list-item {
+    max-height: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+  .list-items .list-item .info {
+    margin: 0;
+    align-items: center;
+  }
+
+  .list-items .list-item .info .title {
+    text-align: center;
+  }
+
+  .list-items .list-item .image {
+    overflow: unset;
+    margin-top: 10px;
+  }
+
+  .list-items .list-item .info .total ul {
+    padding: 0;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 850px) {
+  .container-detail .details .image img {
+    width: 400px;
+  }
+
+  .list-items .list-item .info .total ul {
+    margin-right: 20px;
+  }
 }

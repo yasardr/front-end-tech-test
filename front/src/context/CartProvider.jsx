@@ -8,12 +8,10 @@ export const CartProvider = ({ children }) => {
 
     if (recoveryCart.length === 0) {
         localStorage.setItem('cart', JSON.stringify(recoveryCart));
-        console.log({recoveryCart});
     }
 
     if (recoveryCount === 0) {
         localStorage.setItem('count', JSON.stringify(recoveryCount));
-        console.log({recoveryCount});
     }
 
     const [cart, setCart] = useState(recoveryCart);
