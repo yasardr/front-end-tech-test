@@ -9,7 +9,6 @@ export const useGetProducts = () => {
         const { data } = await productsApi.get('/products');
         setProducts(data);
         setIsLoading(false);
-        console.log({data});
     }
 
     useEffect(() => {
